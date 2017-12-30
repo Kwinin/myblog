@@ -72,6 +72,6 @@ mongoose.connect('mongodb://localhost:27017/kwininblog',{useMongoClient: true},f
     }else{
         console.log("数据库连接成功");
         //监听http请求
-        app.listen(80);
+        app.listen(8081);
     }
 });
