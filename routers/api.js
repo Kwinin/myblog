@@ -2,7 +2,7 @@ var express = require('express');
 var router = express.Router();
 var User = require('../models/Users');
 var Content=require('../models/Content');
-
+var md5 =require('md5');
 //返回统一格式
 var responseData;
 
@@ -80,7 +80,7 @@ router.post('/user/register',function(req,res,next){
         //保存用户注册信息
         var user =new User({
             username:username,
-            password:password
+            password:md5(password)
         });
         return user.save();
     }).then(function(newUserInfo){
@@ -108,7 +108,7 @@ router.post('/user/login',function(req,res,next){
     //查询数据库中用户名和密码是否存在
     User.findOne({
         username:username,
-        password:password
+        password:md5(password)
     }).then(function(userInfo){
         if(!userInfo){
             responseData.code=2;

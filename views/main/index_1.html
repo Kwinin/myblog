@@ -17,7 +17,7 @@
         <ul class="pager">
 
             {%if page<=1%}
-            <li class="previous"><a href="#"><span aria-hidden="true">&larr;</span>没有上一页了</a></li>
+            <li class="previous"><a href=""><span aria-hidden="true">&larr;</span>没有上一页了</a></li>
             {%else%}
             <li class="previous"><a href="/?category={{category}}&page={{page-1}}"><span aria-hidden="true">&larr;</span> 上一页</a></li>
             {%endif%}
@@ -29,7 +29,7 @@
             {%endif%}
 
             {%if page>= pages%}
-            <li class="next"><a href="#">已经是最后一页了 <span aria-hidden="true">&rarr;</span></a></li>
+            <li class="next"><a href="">已经是最后一页了 <span aria-hidden="true">&rarr;</span></a></li>
             {%else%}
             <li class="next"><a href="/?category={{category}}&page={{page+1}}">下一页 <span aria-hidden="true">&rarr;</span></a></li>
             {%endif%}

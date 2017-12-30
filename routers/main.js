@@ -20,7 +20,7 @@ router.use(function(req,res,next){
 router.get('/',function(req,res,next){
     data.category=req.query.category||'';
     data.contents=[];
-    data.page=0;
+    data.page=req.query.page || 1;
     data.pages=0;
     data.limit=3;
     data.count=0;
