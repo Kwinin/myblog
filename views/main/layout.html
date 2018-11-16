@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>博客首页</title>
+    <title>CRAINTY BLOG</title>
     <link rel="stylesheet" href="/public/css/main.css"/>
     <!-- Bootstrap -->
     <link href="/public/css/bootstrap.css" rel="stylesheet">
@@ -16,7 +16,7 @@
 </head>
 <body>
 <div class="container">
-    <img src="/public/img/banner1.png" style="width:100%"/>
+   <a href="http://www.crainty.com:8080"> <img src="/public/img/banner1.png" style="width:100%"/></a>
     <ul class="nav nav-tabs">
         {%if category==''%}
         <li role="presentation" class="active"><a href="/">首页</a></li>
@@ -54,6 +54,9 @@
                     <a href="javascript:;" id="logout">退出</a>
                 </div>
             </div>
+ <div class="col-xs-6 col-md-4">
+                <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=450 src="//music.163.com/outchain/player?type=0&id=2041958653&auto=0&height=430"></iframe>
+            </div>
             {%else%}
             <form class="form-horizontal" id="loginBox">
                 <div class="form-group">
@@ -71,9 +74,9 @@
                 <div class="form-group">
                     <div class="col-sm-offset-2 col-sm-10">
                         <input type="button" value="登陆" class="btn btn-default" />
-                        <a href="javascript:;" class="btn btn-default colMint ">去注册</a>
+                       <!-- <a href="javascript:;" class="btn btn-default colMint ">去注册</a>-->
                         <br/>
-                        <div class="alert colWarning" role="alert" style="text-align: center"></div>
+                        <div class="alert colWarning" role="alert" style="text-align: center;color: #843534"></div>
                     </div>
                 </div>
             </form>
@@ -101,7 +104,7 @@
                         <input type="button" value="注册" class="btn btn-default" />
                         <a href="javascript:;" class="btn btn-default colMint ">去登录</a>
                         <br/>
-                        <div class="alert colWarning" role="alert" style="text-align: center"></div>
+                        <div class="alert colWarning" role="alert" style="text-align: center;color: #843534"></div>
                     </div>
                 </div>
             </form>

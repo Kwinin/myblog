@@ -26,10 +26,36 @@
             <a href="/admin/user/removeAdmin?id={{user._id.toString()}}">否</a>
         </td>
         <td>
-            <a href="/admin/user/userRemove?id={{user._id.toString()}}">删除</a>
+            <!--<a href="/admin/user/userRemove?id={{user._id.toString()}}">删除</a>-->
+            <button id="removeid"  class="btn" type="button" onclick="deleteById('{{user._id.toString()}}')">删除</button>
+
         </td>
     </tr>
     {%endfor%}
 </table>
+
+<div class="alert colWarning" role="alert" style="text-align: center;color: #843534">
+<script type="text/javascript" src="/public/js/jquery-1.11.3.js"></script>
+<script>
+    function deleteById(userId) {
+//        alert(111);
+        $.ajax({
+            type: 'get',
+            url: '/admin/user/userRemove',
+            data: {
+                id: userId
+            },
+            dataType: 'json',
+
+            success:function (res) {
+
+                alert(res.message);
+                window.location.reload();
+            }
+
+        });
+    }
+
+</script>
 {%include 'page.html'%}
 {%endblock%}

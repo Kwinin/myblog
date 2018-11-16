@@ -4,6 +4,18 @@ var router = express.Router();
 var User=require('../models/Users');
 var Category=require('../models/Category');
 var Content=require('../models/Content');
+
+//返回统一格式
+var responseData;
+
+router.use(function(req,res,next){
+    responseData={
+        code:0,
+        message:''
+    }
+    next();
+});
+
 router.use(function(req,res,next){
     if(!req.userInfo.isAdmin){
         //如果当前是非管理员
@@ -101,16 +113,32 @@ router.get('/user/removeAdmin',function(req,res){
 * */
 router.get('/user/userRemove',function(req,res){
     //获取要删除的分类id
-    var id=req.query.id||'';
-    User.remove({
-        _id:id
-    }).then(function(){
-        res.render('admin/success',{
-            userInfo:req.userInfo,
-            message:'删除成功',
-            url:'/admin/user'
+    console.log(req.userInfo.username+'@@@userremove');
+    var username=req.userInfo.username;
+    if(username =='kwinin'||username=='crainty'){
+        var id=req.query.id||'';
+        User.remove({
+            _id:id
+        }).then(function(){
+            responseData.code=2;
+            responseData.message="删除成功";
+            res.json(responseData);
+            return;
+            // res.render('admin/success',{
+            //     userInfo:req.userInfo,
+            //     message:'删除成功',
+            //    // url:'/admin/user'
+            //
+            // });
         });
-    });
+    }else {
+
+        responseData.code=1;
+        responseData.message="没有删除权限";
+        res.json(responseData);
+        return;
+        console.log('没有删除权限');
+    }
 });
 /*
 * 分类首页
@@ -361,7 +389,8 @@ router.post('/content/add',function(req,res){
         title:req.body.title,
         user:req.userInfo._id.toString(),
         description:req.body.description,
-        content:req.body.textParse
+        content:req.body.textParse,
+	addTime:new Date()
     }).save().then(function(rs){
             res.render('admin/success',{
                 userInfo:req.userInfo,

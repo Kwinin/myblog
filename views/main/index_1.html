@@ -2,6 +2,7 @@
 {%block content%}
     {%for  content in contents%}
     <div class="jumbotron">
+{%if userInfo._id%}
         <h3 style="text-align: center">{{content.title}}</h3>
         <p style="font-size: 15px">
             作者：<span>{{content.user.username}}</span>-
@@ -11,13 +12,16 @@
         </p>
         <p>{{content.description}}</p>
         <p><a class="btn btn-primary btn-sm" href="/view?contentId={{content.id}}" role="button">查看全文</a></p>
-    </div>
+  {%else%}
+        <div class="alert alert-warning" role="alert" style="text-align: center">你还没有登录请先登陆</div>
+        {%endif%}   
+ </div>
     {%endfor%}
     <nav>
         <ul class="pager">
 
             {%if page<=1%}
-            <li class="previous"><a href="#"><span aria-hidden="true">&larr;</span>没有上一页了</a></li>
+            <li class="previous"><a href=""><span aria-hidden="true">&larr;</span>没有上一页了</a></li>
             {%else%}
             <li class="previous"><a href="/?category={{category}}&page={{page-1}}"><span aria-hidden="true">&larr;</span> 上一页</a></li>
             {%endif%}
@@ -29,7 +33,7 @@
             {%endif%}
 
             {%if page>= pages%}
-            <li class="next"><a href="#">已经是最后一页了 <span aria-hidden="true">&rarr;</span></a></li>
+            <li class="next"><a href="">已经是最后一页了 <span aria-hidden="true">&rarr;</span></a></li>
             {%else%}
             <li class="next"><a href="/?category={{category}}&page={{page+1}}">下一页 <span aria-hidden="true">&rarr;</span></a></li>
             {%endif%}

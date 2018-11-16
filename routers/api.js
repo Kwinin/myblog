@@ -2,7 +2,7 @@ var express = require('express');
 var router = express.Router();
 var User = require('../models/Users');
 var Content=require('../models/Content');
-var md5 = require('md5');
+var md5 =require('md5');
 //返回统一格式
 var responseData;
 
